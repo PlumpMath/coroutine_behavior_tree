@@ -6,6 +6,8 @@
 #include <initializer_list>
 #include <vector>
 #include <memory>
+#include <sstream>
+#include <fstream>
 
 namespace cbt
 {
@@ -69,6 +71,35 @@ namespace cbt
         protected:
             size_t currentIdx;
             bool firstIter;
+    };
+
+    class Select : public Act
+    {
+        public:
+            typedef std::shared_ptr<Sequence> shared_ptr;
+            Select();
+            Select(const std::vector<Act::shared_ptr>& childList);
+            Select(std::initializer_list<Act::shared_ptr> explicitChildList);
+            virtual void Initialize();
+            virtual ActStatus Next();
+
+        protected:
+            size_t currentIdx;
+            bool firstIter;
+    };
+
+    class Parallel : public Act
+    {
+        public:
+            typedef std::shared_ptr<Sequence> shared_ptr;
+            Parallel();
+            Parallel(const std::vector<Act::shared_ptr>& childList);
+            Parallel(std::initializer_list<Act::shared_ptr> explicitChildList);
+            virtual void Initialize();
+            virtual ActStatus Next();
+
+        protected:
+            size_t currentIdx;
     };
 }
 
