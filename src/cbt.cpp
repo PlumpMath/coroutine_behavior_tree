@@ -35,7 +35,11 @@ namespace cbt
 
     void Leaf::Initialize()
     {
-        // TODO: Reset the state of the coroutine!?
+        // TODO: Reset the state of the coroutine!? Copy a coroutine!? 
+        // apparently not possible in boost!
+        
+        // This is necessary because leaves have to be reset every time they
+        // start.
     }
 
     void Leaf::SetFunc(const std::shared_ptr<coroutine>& fn)
